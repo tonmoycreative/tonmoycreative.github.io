@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasnemul Tonmoy — Creative Portfolio</title>
+<meta name="description" content="Tasnemul Tonmoy — Creative marketer, video editor, motion designer and graphic designer.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#0b0b0b;
+  --fg:#f2f0eb;
+  --muted:#8b8b86;
+  --line:#242424;
+  --card:#111111;
+  --accent:#d8ff55;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:Manrope,Arial,sans-serif;
+  line-height:1.45;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#000}
+.container{width:min(1240px,calc(100% - 48px));margin:auto}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  height:78px;display:flex;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);background:rgba(11,11,11,.72);
+}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;width:100%}
+.logo{font-weight:800;letter-spacing:-.04em;font-size:18px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;font:12px "DM Mono",monospace;text-transform:uppercase;color:#aaa}
+.nav-links a:hover{color:var(--fg)}
+.hero{min-height:100vh;display:flex;align-items:flex-end;padding:150px 0 72px;position:relative}
+.hero:before{
+  content:"";position:absolute;width:520px;height:520px;right:-180px;top:120px;
+  background:radial-gradient(circle,rgba(216,255,85,.13),transparent 68%);
+  filter:blur(10px);pointer-events:none;
+}
+.eyebrow{font:11px "DM Mono",monospace;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:28px}
+.hero h1{
+  max-width:1050px;font-size:clamp(58px,9vw,142px);line-height:.88;
+  letter-spacing:-.075em;font-weight:700;
+}
+.hero h1 em{font-style:normal;color:#73736f}
+.hero-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:70px;gap:40px}
+.hero-copy{max-width:520px;color:#aaa;font-size:16px}
+.scroll{font:11px "DM Mono",monospace;text-transform:uppercase;color:#777}
+.section{padding:140px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:30px;margin-bottom:65px}
+.section-number{font:12px "DM Mono",monospace;color:var(--accent)}
+.section-title{font-size:clamp(38px,5vw,72px);line-height:.95;letter-spacing:-.055em;max-width:800px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.work{
+  min-height:430px;background:var(--card);border:1px solid var(--line);
+  padding:28px;display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;transition:transform .45s ease,border-color .45s ease;
+}
+.work:hover{transform:translateY(-6px);border-color:#4a4a4a}
+.work:nth-child(1){background:linear-gradient(135deg,#151515,#20231b)}
+.work:nth-child(2){background:linear-gradient(135deg,#111,#1d1721)}
+.work:nth-child(3){background:linear-gradient(135deg,#141414,#182024)}
+.work:nth-child(4){background:linear-gradient(135deg,#161616,#201c16)}
+.work-num{font:11px "DM Mono",monospace;color:#777}
+.work-visual{height:190px;display:flex;align-items:center;justify-content:center}
+.visual-word{font-size:clamp(42px,6vw,82px);font-weight:800;letter-spacing:-.08em;opacity:.9}
+.work-info{display:flex;justify-content:space-between;align-items:end;gap:20px}
+.work h3{font-size:25px;letter-spacing:-.04em}
+.work p{font-size:12px;color:#888;margin-top:7px}
+.work-arrow{font-size:25px;color:var(--accent)}
+.services{border-top:1px solid var(--line)}
+.service{
+  display:grid;grid-template-columns:70px 1fr auto;gap:30px;
+  padding:32px 0;border-bottom:1px solid var(--line);align-items:center;
+  transition:padding .3s ease;
+}
+.service:hover{padding-left:12px}
+.service-no{font:12px "DM Mono",monospace;color:#666}
+.service h3{font-size:clamp(28px,4vw,54px);letter-spacing:-.055em}
+.service small{color:#777;font:11px "DM Mono",monospace;text-transform:uppercase}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:100px}
+.about-lead{font-size:clamp(28px,4vw,52px);letter-spacing:-.05em;line-height:1.02}
+.about-lead span{color:#666}
+.about-side{color:#999;font-size:14px}
+.about-side p+p{margin-top:25px}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:55px}
+.fact{background:var(--bg);padding:24px}
+.fact b{display:block;font-size:21px;margin-bottom:6px}
+.fact span{font:10px "DM Mono",monospace;color:#666;text-transform:uppercase}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.tool{border:1px solid var(--line);padding:10px 14px;border-radius:100px;font:11px "DM Mono",monospace;color:#aaa}
+.contact{min-height:75vh;display:flex;flex-direction:column;justify-content:space-between}
+.contact h2{font-size:clamp(55px,10vw,150px);line-height:.83;letter-spacing:-.08em;max-width:1100px}
+.contact h2 span{color:var(--accent)}
+.contact-bottom{display:flex;justify-content:space-between;align-items:end;gap:30px}
+.email{font-size:clamp(20px,3vw,34px);letter-spacing:-.04em}
+.email:hover{color:var(--accent)}
+.socials{display:flex;gap:20px;font:11px "DM Mono",monospace;text-transform:uppercase;color:#888}
+footer{padding:25px 0;border-top:1px solid var(--line);font:10px "DM Mono",monospace;color:#666;display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:760px){
+  .container{width:min(100% - 30px,1240px)}
+  .nav{height:65px}.nav-links{display:none}
+  .hero{padding:125px 0 50px}.hero-bottom{display:block;margin-top:45px}
+  .scroll{margin-top:35px}.section{padding:90px 0}
+  .section-head{margin-bottom:42px}
+  .work-grid{grid-template-columns:1fr}.work{min-height:350px}
+  .about-grid{grid-template-columns:1fr;gap:45px}
+  .service{grid-template-columns:38px 1fr}.service small{display:none}
+  .contact{min-height:65vh}.contact-bottom{display:block}.socials{margin-top:30px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#">TT<span>.</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Creative marketer / visual storyteller</div>
+    <h1>I make ideas<br><em>worth watching.</em></h1>
+    <div class="hero-bottom">
+      <p class="hero-copy">I'm Tasnemul Tonmoy — a marketing graduate working across video editing, motion design, graphic design and digital marketing.</p>
+      <div class="scroll">Scroll to explore ↓</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">01 / Selected work</div>
+      <div class="section-title">A few things I've made, shaped or helped grow.</div>
+    </div>
+    <div class="work-grid">
+      <a class="work reveal" href="#">
+        <div class="work-num">01 — VIDEO / CONTENT</div>
+        <div class="work-visual"><div class="visual-word">QUICK<br>PEEK</div></div>
+        <div class="work-info"><div><h3>Quick Peek</h3><p>Media • Content • Visual storytelling</p></div><div class="work-arrow">↗</div></div>
+      </a>
+      <a class="work reveal" href="#">
+        <div class="work-num">02 — MARKETING / EDUCATION</div>
+        <div class="work-visual"><div class="visual-word">EARTH<br>DREAMS</div></div>
+        <div class="work-info"><div><h3>Earth Dreams</h3><p>Social media • Meta ads • Campaigns</p></div><div class="work-arrow">↗</div></div>
+      </a>
+      <a class="work reveal" href="#">
+        <div class="work-num">03 — CAMPAIGN / SOLAR</div>
+        <div class="work-visual"><div class="visual-word">SOLAR<br>400+</div></div>
+        <div class="work-info"><div><h3>Solar Campaign</h3><p>Lead generation • Content • Creative</p></div><div class="work-arrow">↗</div></div>
+      </a>
+      <a class="work reveal" href="#">
+        <div class="work-num">04 — DESIGN / ADVERTISING</div>
+        <div class="work-visual"><div class="visual-word">VISUAL<br>SYSTEMS</div></div>
+        <div class="work-info"><div><h3>Graphic Design</h3><p>Posters • Advertising • Product visuals</p></div><div class="work-arrow">↗</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">02 / What I do</div>
+      <div class="section-title">Four disciplines.<br>One creative approach.</div>
+    </div>
+    <div class="services">
+      <div class="service reveal"><div class="service-no">01</div><h3>Video Editing</h3><small>Premiere Pro</small></div>
+      <div class="service reveal"><div class="service-no">02</div><h3>Motion Design</h3><small>After Effects</small></div>
+      <div class="service reveal"><div class="service-no">03</div><h3>Graphic Design</h3><small>Photoshop / Illustrator</small></div>
+      <div class="service reveal"><div class="service-no">04</div><h3>Digital Marketing</h3><small>Content / Meta Ads</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">03 / About</div>
+      <div class="section-title">Marketing is the foundation. Creativity is the multiplier.</div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-lead">I'm a <span>BBA graduate in Marketing</span> who likes turning strategy into visuals people actually remember.</p>
+        <div class="facts">
+          <div class="fact"><b>2026</b><span>BBA / Marketing Major</span></div>
+          <div class="fact"><b>IUB</b><span>Independent University, Bangladesh</span></div>
+          <div class="fact"><b>4</b><span>Creative disciplines</span></div>
+          <div class="fact"><b>400+</b><span>Solar leads generated</span></div>
+        </div>
+      </div>
+      <div class="about-side">
+        <p>I work at the intersection of marketing, content and design — building social content, campaign creatives, motion pieces and visual communication.</p>
+        <p>My goal is simple: make the message clear, the visual memorable and the result useful.</p>
+        <div class="tools">
+          <div class="tool">Photoshop</div><div class="tool">Illustrator</div><div class="tool">Premiere Pro</div><div class="tool">After Effects</div><div class="tool">Canva</div><div class="tool">Meta Ads</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <div>
+      <div class="eyebrow">04 / Let's work</div>
+      <h2>Have an idea?<br><span>Let's make it.</span></h2>
+    </div>
+    <div class="contact-bottom">
+      <a class="email" href="mailto:your@email.com">your@email.com ↗</a>
+      <div class="socials"><a href="#">LinkedIn</a><a href="#">Behance</a><a href="#">Instagram</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="container">
+  <span>© 2026 Tasnemul Tonmoy</span>
+  <span>Built with curiosity.</span>
+</footer>
+
+<script>
+const items=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.12});
+items.forEach(i=>observer.observe(i));
+</script>
+</body>
+</html>
